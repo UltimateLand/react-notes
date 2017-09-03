@@ -9,6 +9,7 @@ export const NoteListItem = (props) => {
   return (
     <div onClick={() => { props.Session.set('selectedNoteId', props.note._id)}}>
       <h5>{ props.note.title || 'Untitled note' }</h5>
+      { props.note.selected ? 'Selectd' : undefined }
       <p>{ moment(props.note.updatedAt).format('M/DD/YY') }</p>
       <button onClick={() => { Meteor.call('notes.remove', props.note._id) }}>Delete</button>
     </div>
