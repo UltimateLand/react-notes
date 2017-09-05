@@ -1,6 +1,5 @@
 .boxed-view {
   align-items: center;
-  background: $boxed-view-overlay-bg;
   display: flex;
   justify-content: center;
   height: 100vh;
@@ -13,14 +12,15 @@
   top: 0;
   left: 0;
   right: 0;
-  buttom: 0;
+  bottom: 0;
 }
 
 .boxed-view__box {
   background-color: $boxed-view-bg;
+  border: 1px solid $box-view-broder-color;
   padding: 2.4rem;
   text-align: center;
-  width: 24rem;
+  width: 20rem;
 }
 
 .boxed-view__form {
