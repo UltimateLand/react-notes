@@ -36,3 +36,12 @@
   text-decoration: underline;
   text-transform: none;
 }
+
+.button-modal {
+  margin-bottom: 0;
+  width: $button-width;
+}
+
+.button--spacing {
+  margin-right: $space;
+}

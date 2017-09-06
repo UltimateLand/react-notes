@@ -23,3 +23,7 @@ Run the following command and view the reporter at http://localhost:3000.
 ```
 npm test
 ```
+
+## Or simply visit this application on Heroku
+
+https://react-notes-jrc.herokuapp.com/

@@ -4,6 +4,7 @@ import { Session } from 'meteor/session';
 import { createContainer } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { browserHistory } from 'react-router';
+import Modal from 'react-modal';
 
 import { Notes } from '../api/notes';
 
@@ -12,7 +13,8 @@ export class Editor extends React.Component {
     super(props);
     this.state = {
       title: '',
-      body: ''
+      body: '',
+      modalOpen: false
     };
   }
   handleTitleChange(e) {
@@ -26,6 +28,7 @@ export class Editor extends React.Component {
     this.props.call('notes.update', this.props.note._id, { body });
   }
   handleRemoval() {
+    this.setState({ modalOpen: false });
     this.props.call('notes.remove', this.props.note._id);
     this.props.browserHistory.replace('/dashboard');
   }
@@ -47,7 +50,24 @@ export class Editor extends React.Component {
           <input className="editor__title" value={this.state.title} placeholder='Untitled Note' onChange={this.handleTitleChange.bind(this)}/>
           <textarea className="editor__body" ref='body' value={this.state.body} placeholder='Your note here' onChange={this.handleBodyChange.bind(this)}></textarea>
           <div>
-            <button className="button button--secondary" onClick={this.handleRemoval.bind(this)}>Delete Note</button>
+            <button className="button button--secondary" onClick={() => this.setState({modalOpen: true})}>Delete Note</button>
+            <Modal
+              isOpen={this.state.modalOpen}
+              contentLabel="Delete the Note"
+              onRequestClose={() => this.setState({modalOpen: false})}
+              className="boxed-view__modal"
+              overlayClassName="boxed-view boxed-view--modal">
+              <h2>Delete the Note</h2>
+              <h3 className="editor-modal__title">Title:{this.state.title}</h3>
+              <div className="editor-modal__body">
+                <p className="editor-modal__body--note">Note:</p>
+                <p className="editor-modal__body--space">{this.state.body}</p>
+              </div>
+              <div>
+                <button className="button button-modal button--spacing" onClick={this.handleRemoval.bind(this)}>Yes</button>
+                <button className="button button-modal button--secondary" onClick={() => this.setState({modalOpen: false})}>No</button>
+              </div>
+            </Modal>
           </div>
         </div>
       )

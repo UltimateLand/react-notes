@@ -15,7 +15,7 @@ export const NoteListItem = (props) => {
     }}>
       <h5 className="item__title">{ props.note.title || 'Untitled note' }</h5>
       <p className="item__subtitle">{ moment(props.note.updatedAt).format('M/DD/YY') }</p>
-      {/*<button onClick={() => { Meteor.call('notes.remove', props.note._id) }}>Delete</button>*/}
+      {/*<button className="button" onClick={() => { Meteor.call('notes.remove', props.note._id) }}>Delete</button>*/}
     </div>
   );
 };

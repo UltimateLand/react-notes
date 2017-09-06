@@ -31,3 +31,25 @@
   margin: $large-space;
   font-style: italic;
 }
+
+.editor-modal__title {
+  overflow: hidden;
+}
+
+.editor-modal__body {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  margin-bottom: $space;
+}
+
+.editor-modal__body--note {
+  position: fixed;
+}
+
+.editor-modal__body--space {
+  margin-left: 3rem;
+  margin-bottom: 0;
+  overflow: auto;
+  word-break: break-all;
+}

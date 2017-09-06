@@ -13,6 +13,7 @@
   left: 0;
   right: 0;
   bottom: 0;
+  z-index: 2;
 }
 
 .boxed-view__box {
@@ -21,6 +22,22 @@
   padding: 2.4rem;
   text-align: center;
   width: 20rem;
+}
+
+.boxed-view__modal {
+  background-color: $boxed-view-bg;
+  border: 1px solid $box-view-broder-color;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 2.4rem;
+  text-align: center;
+  width: 100%;
+
+  @include desktop {
+    height: 30rem;
+    width: 60rem;
+  }
 }
 
 .boxed-view__form {
